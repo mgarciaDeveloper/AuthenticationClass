@@ -30,11 +30,11 @@ const userSchema = new mongoose.Schema({
   password: String
 });
 
-const secret = "ThisisOurLittkeSecret"
-userSchema.plugin(encrypt, { secret: secret, encryptedFields: ['email','password'] });
+// const secret = "ThisisOurLittkeSecret"
+// userSchema.plugin(encrypt, { secret: secret, encryptedFields: ['email','password'] });
 
-// console.log(process.env.SECRET);
-// userSchema.plugin(encrypt, { secret: process.env.SECRET, encryptedFields: ["password"] });
+console.log(process.env.SECRET);
+userSchema.plugin(encrypt, { secret: process.env.SECRET, encryptedFields: ["password"] });
 
 
 //and now, we create a collection
